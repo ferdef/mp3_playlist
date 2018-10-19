@@ -3,6 +3,7 @@ import os
 import logging
 from glob import glob
 import argparse
+from pathlib import Path
 
 
 logger = logging.getLogger(__name__)
@@ -41,8 +42,12 @@ def get_files(path):
 
 
 def create_playlist(path, filename, files):
-    logger.info("{} - {}".format(path, filename))
-    pass
+    logger.info("Creating playlist {} in {}".format(filename, path))
+    with open(Path(path) / filename, 'w', encoding='utf8') as playlist_file:
+        for f in files:
+            f_path = Path(f)
+            logger.info("{} - {}".format(f, f_path))
+            playlist_file.write("{}{}".format(f, "\n"))
 
 
 def text_based(args):
