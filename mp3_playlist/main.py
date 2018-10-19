@@ -41,13 +41,12 @@ def get_files(path):
     return files
 
 
-def create_playlist(path, filename, files):
+def create_playlist(path, filename, files, source):
     logger.info("Creating playlist {} in {}".format(filename, path))
     with open(Path(path) / filename, 'w', encoding='utf8') as playlist_file:
         for f in files:
-            f_path = Path(f)
-            logger.info("{} - {}".format(f, f_path))
-            playlist_file.write("{}{}".format(f, "\n"))
+            f_path = Path(f).relative_to(source)
+            playlist_file.write("\{}{}".format(str(f_path), "\n"))
 
 
 def text_based(args):
@@ -57,7 +56,7 @@ def text_based(args):
         files = get_files(path=folder)
         logger.info('Folder {}'.format(folder.strip(os.sep)))
         filename = "{}{}".format(os.path.basename(folder.strip(os.sep)), '.m3u')
-        create_playlist(path=args['destination'], filename=filename, files=files)
+        create_playlist(path=args['destination'], filename=filename, files=files, source=args['source'])
 
 
 def gui_based(args):
