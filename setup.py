@@ -15,5 +15,6 @@ setuptools.setup(
     url="https://github.com/ferdef/mp3_playlist",
     license="GNU GPLv3",
     packages=setuptools.find_packages(),
-    classifiers=[]
+    classifiers=[],
+    test_suite="mp3_playlist.tests"
 )
