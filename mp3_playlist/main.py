@@ -46,7 +46,7 @@ def create_playlist(path, filename, files, source):
     with open(Path(path) / filename, 'w', encoding='utf8') as playlist_file:
         for f in files:
             f_path = Path(f).relative_to(source)
-            playlist_file.write("\{}{}".format(str(f_path), "\n"))
+            playlist_file.write("\\{}{}".format(str(f_path), "\n"))
 
 
 def text_based(args):
