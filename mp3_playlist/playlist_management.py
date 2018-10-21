@@ -1,7 +1,7 @@
+import os
 from glob import glob
 from pathlib import Path
-import logging
-logger = logging.getLogger(__name__)
+from log import logger
 
 
 def get_subfolders(path='.'):

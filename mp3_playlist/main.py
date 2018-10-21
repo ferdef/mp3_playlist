@@ -1,20 +1,9 @@
 import sys
 import os
-import logging
 import argparse
 import test_based as tb
 import gui_based as gb
-
-logger = logging.getLogger(__name__)
-
-
-def setup_logger():
-    logger.setLevel(logging.INFO)
-    ch = logging.StreamHandler(sys.stdout)
-    ch.setLevel(logging.DEBUG)
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    ch.setFormatter(formatter)
-    logger.addHandler(ch)
+from log import logger
 
 
 def parse_args():
@@ -28,7 +17,6 @@ def parse_args():
 
 def main():
     args = vars(parse_args())
-    setup_logger()
     logger.info('Mp3 Playlist Creator')
 
     if args['graphical']:

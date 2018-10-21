@@ -1,7 +1,6 @@
 import os
-import logging
 from playlist_management import get_subfolders, get_files, create_playlist
-logger = logging.getLogger(__name__)
+from log import logger
 
 
 def process(args):

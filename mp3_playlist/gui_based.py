@@ -1,5 +1,4 @@
-import logging
-logger = logging.getLogger(__name__)
+from log import logger
 
 
 def process(args):
