@@ -43,10 +43,13 @@ def get_files(path):
 
 def create_playlist(path, filename, files, source):
     logger.info("Creating playlist {} in {}".format(filename, path))
-    with open(Path(path) / filename, 'w', encoding='utf8') as playlist_file:
+    if len(files) == 0:
+        return
+    with open(Path(path) / filename, 'w', encoding='utf-8') as playlist_file:
         for f in files:
-            f_path = Path(f).relative_to(source)
-            playlist_file.write("\\{}{}".format(str(f_path), "\n"))
+            f_path = str(Path(f).relative_to(source))
+            logger.info("{}".format(f_path))
+            playlist_file.write("\\{}{}".format(f_path, "\n"))
 
 
 def text_based(args):
